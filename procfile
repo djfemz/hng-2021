@@ -1,1 +1,1 @@
-web:go ./portfolio-website.exe
+web: ./portfolio-website
