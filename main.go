@@ -4,17 +4,18 @@ import (
 	"html/template"
 	"log"
 	"net/http"
-
+	"os"
 )
 
 func main() {
+	port := os.Getenv("PORT")
 	fs := http.FileServer(http.Dir("./assets"))
 	router := http.NewServeMux()
 	router.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	router.HandleFunc("/home", home)
 	router.HandleFunc("/processForm", processForm)
 	server := http.Server{
-		Addr:    "127.0.0.1:9093",
+		Addr:    port,
 		Handler: router,
 	}
 	server.ListenAndServe()
@@ -27,8 +28,6 @@ func home(rw http.ResponseWriter, r *http.Request) {
 	}
 }
 
-func processForm(rw http.ResponseWriter, req *http.Request){
+func processForm(rw http.ResponseWriter, req *http.Request) {
 	http.Redirect(rw, req, "/home", http.StatusTemporaryRedirect)
 }
-
-
