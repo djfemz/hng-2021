@@ -8,8 +8,8 @@ import (
 )
 
 func main() {
-	port := os.Getenv("PORT")
 	fs := http.FileServer(http.Dir("./assets"))
+	port := os.Getenv("PORT")
 	router := http.NewServeMux()
 	router.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	router.HandleFunc("/home", home)
