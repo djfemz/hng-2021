@@ -12,7 +12,7 @@ func main() {
 	port := os.Getenv("PORT")
 	router := http.NewServeMux()
 	router.Handle("/assets/", http.StripPrefix("/assets/", fs))
-	router.HandleFunc("/home", home)
+	router.HandleFunc("/", home)
 	router.HandleFunc("/processForm", processForm)
 	server := http.Server{
 		Addr:    port,
