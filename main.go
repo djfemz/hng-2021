@@ -15,7 +15,7 @@ func main() {
 	router.HandleFunc("/", home)
 	router.HandleFunc("/processForm", processForm)
 	server := http.Server{
-		Addr:    port,
+		Addr:    ":"+port,
 		Handler: router,
 	}
 	server.ListenAndServe()
