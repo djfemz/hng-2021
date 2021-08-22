@@ -13,7 +13,7 @@ func main() {
 	router := http.NewServeMux()
 	router.Handle("/assets/", http.StripPrefix("/assets/", fs))
 	router.HandleFunc("/", home)
-	router.HandleFunc("/processForm", processForm)
+	router.HandleFunc("/phiyarina", processForm)
 	server := http.Server{
 		Addr:    ":"+port,
 		Handler: router,
@@ -29,5 +29,5 @@ func home(rw http.ResponseWriter, r *http.Request) {
 }
 
 func processForm(rw http.ResponseWriter, req *http.Request) {
-	http.Redirect(rw, req, "/home", http.StatusTemporaryRedirect)
+	http.Redirect(rw, req, "https://guarded-shelf-04350.herokuapp.com/", http.StatusTemporaryRedirect)
 }
